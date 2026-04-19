@@ -440,6 +440,41 @@
     footer .logo { font-weight: 800; color: var(--orange); }
     footer p { font-size: 13px; color: var(--muted); }
 
+    .tier-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .tier-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tier-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #000;
+    }
+
+    .tier-plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .tier-plans.hidden { display: none; }
+
     @media (max-width: 600px) {
       nav { padding: 16px 20px; }
       .preview-content { grid-template-columns: 1fr; }
@@ -558,35 +593,100 @@
   <!-- PRICING -->
   <section class="section" id="pricing">
     <div class="section-label">Pricing</div>
-    <h2>Simple, one-time pricing</h2>
-    <div class="pricing-grid">
+    <h2>Pay only for what you need</h2>
+
+    <!-- Tier Toggle -->
+    <div class="tier-toggle">
+      <button class="tier-btn active" onclick="showTier(1, this)">Starter · 250/day</button>
+      <button class="tier-btn" onclick="showTier(2, this)">Pro · 500/day</button>
+    </div>
+
+    <!-- Starter Tier -->
+    <div id="tier-1" class="tier-plans">
       <div class="pricing-card">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price"><sup>$</sup>8.99</div>
-        <div class="plan-period">per month · pay as you go</div>
+        <div class="plan-name">1 Day</div>
+        <div class="plan-price"><sup>$</sup>2.99</div>
+        <div class="plan-period">one-time · 24hr access</div>
         <ul class="plan-features">
-          <li>250 listing generations/day</li>
+          <li>250 generations today</li>
+          <li>Standard AI model</li>
           <li>AI titles, descriptions & tags</li>
           <li>Works on Etsy & eBay</li>
-          <li>Chrome extension</li>
-          <li>30 days access</li>
+          <li>Key emailed instantly</li>
         </ul>
-        <a href="YOUR_STRIPE_STARTER_LINK" class="plan-btn secondary">Get Starter →</a>
+        <a href="https://buy.stripe.com/14AaEWgsacFZ8znf3Z1wY06" class="plan-btn secondary">Get Day Pass →</a>
       </div>
       <div class="pricing-card popular">
-        <div class="popular-badge">Most Popular</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>$</sup>14.99</div>
-        <div class="plan-period">per month · pay as you go</div>
+        <div class="popular-badge">Best Value</div>
+        <div class="plan-name">1 Week</div>
+        <div class="plan-price"><sup>$</sup>4.99</div>
+        <div class="plan-period">one-time · 7 days access</div>
         <ul class="plan-features">
-          <li>500 listing generations/day</li>
+          <li>250 generations/day</li>
+          <li>Standard AI model</li>
           <li>AI titles, descriptions & tags</li>
           <li>Works on Etsy & eBay</li>
-          <li>Chrome extension</li>
-          <li>30 days access</li>
+          <li>Key emailed instantly</li>
+        </ul>
+        <a href="https://buy.stripe.com/bJe7sK3Fo49tbLz8FB1wY05" class="plan-btn primary">Get Week Pass →</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">1 Month</div>
+        <div class="plan-price"><sup>$</sup>8.99</div>
+        <div class="plan-period">one-time · 30 days access</div>
+        <ul class="plan-features">
+          <li>250 generations/day</li>
+          <li>Standard AI model</li>
+          <li>AI titles, descriptions & tags</li>
+          <li>Works on Etsy & eBay</li>
+          <li>Key emailed instantly</li>
+        </ul>
+        <a href="https://buy.stripe.com/5kQeVcb7QgWfg1PbRN1wY04" class="plan-btn secondary">Get Month Pass →</a>
+      </div>
+    </div>
+
+    <!-- Pro Tier -->
+    <div id="tier-2" class="tier-plans hidden">
+      <div class="pricing-card">
+        <div class="plan-name">1 Day</div>
+        <div class="plan-price"><sup>$</sup>4.99</div>
+        <div class="plan-period">one-time · 24hr access</div>
+        <ul class="plan-features">
+          <li>500 generations today</li>
+          <li>⚡ Advanced AI model</li>
+          <li>Higher quality listings</li>
+          <li>Works on Etsy & eBay</li>
+          <li>Key emailed instantly</li>
+        </ul>
+        <a href="https://buy.stripe.com/28E4gy1xg0Xh6rfaNJ1wY03" class="plan-btn secondary">Get Day Pass →</a>
+      </div>
+      <div class="pricing-card popular">
+        <div class="popular-badge">Best Value</div>
+        <div class="plan-name">1 Week</div>
+        <div class="plan-price"><sup>$</sup>9.99</div>
+        <div class="plan-period">one-time · 7 days access</div>
+        <ul class="plan-features">
+          <li>500 generations/day</li>
+          <li>⚡ Advanced AI model</li>
+          <li>Higher quality listings</li>
+          <li>Works on Etsy & eBay</li>
+          <li>Key emailed instantly</li>
+        </ul>
+        <a href="https://buy.stripe.com/28E00i3FodK33f3g831wY02" class="plan-btn primary">Get Week Pass →</a>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name">1 Month</div>
+        <div class="plan-price"><sup>$</sup>14.99</div>
+        <div class="plan-period">one-time · 30 days access</div>
+        <ul class="plan-features">
+          <li>500 generations/day</li>
+          <li>⚡ Advanced AI model</li>
+          <li>Higher quality listings</li>
+          <li>Works on Etsy & eBay</li>
+          <li>Key emailed instantly</li>
           <li>Priority support</li>
         </ul>
-        <a href="YOUR_STRIPE_PRO_LINK" class="plan-btn primary">Get Pro →</a>
+        <a href="https://buy.stripe.com/dRm14ma3M21l8zn8FB1wY01" class="plan-btn secondary">Get Month Pass →</a>
       </div>
     </div>
   </section>
@@ -629,8 +729,17 @@
   <!-- FOOTER -->
   <footer>
     <div class="logo">RankifyAI</div>
-    <p>© 2026 RankifyAI. All rights reserved.</p>
+    <p>© 2026 RankifyAI. All rights reserved. · <a href="tos.html" style="color: var(--orange)">Terms of Service</a></p>
   </footer>
+
+  <script>
+    function showTier(tier, btn) {
+      document.querySelectorAll('.tier-plans').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tier-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tier-' + tier).classList.remove('hidden');
+      btn.classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
