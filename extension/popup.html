@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RankifyAI</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- Key Setup Screen -->
+  <div id="key-screen" class="screen">
+    <div class="key-hero">
+      <div class="logo">RankifyAI</div>
+      <p class="subtitle">AI listings for Etsy & eBay</p>
+    </div>
+    <div class="key-form">
+      <label class="field-label">License Key</label>
+      <input id="key-input" type="text" placeholder="ESY-XXXX-XXXX-XXXX" />
+      <button id="key-submit">Activate →</button>
+      <p class="hint">Don't have a key? <a href="#" id="get-key-link">Get one →</a></p>
+      <p id="key-error" class="error hidden"></p>
+    </div>
+  </div>
+
+  <!-- Chat Screen -->
+  <div id="chat-screen" class="screen hidden">
+
+    <!-- Header -->
+    <div class="header">
+      <span class="logo-small">RankifyAI</span>
+      <div class="header-right">
+        <span id="header-expiry" class="expiry-chip"></span>
+        <button id="settings-btn" title="Settings">⚙️</button>
+      </div>
+    </div>
+
+    <!-- Platform Switcher -->
+    <div class="platform-switcher">
+      <button class="platform-btn active" data-platform="etsy">
+        <span class="platform-icon">🛍️</span> Etsy
+      </button>
+      <button class="platform-btn" data-platform="ebay">
+        <span class="platform-icon">📦</span> eBay
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div id="messages" class="messages">
+      <div class="message assistant">
+        Hey! I'm RankifyAI. Tell me what you're selling on <strong>Etsy</strong> and I'll craft an optimized title, description, and tags. 🎨
+      </div>
+    </div>
+
+    <!-- Image Preview Strip -->
+    <div id="image-preview-strip" class="image-strip hidden">
+      <img id="preview-img" src="" alt="Product" />
+      <span id="preview-label">Photo ready — ask me anything below</span>
+      <button id="clear-image-btn" title="Remove photo">✕</button>
+    </div>
+
+    <!-- Input -->
+    <div class="input-row">
+      <label id="upload-btn" title="Upload product photo">
+        📷
+        <input id="image-upload" type="file" accept="image/*" style="display:none" />
+      </label>
+      <textarea id="user-input" placeholder="Describe your product..." rows="2"></textarea>
+      <button id="send-btn">➤</button>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+      <button class="quick-btn" data-prompt="Generate a full optimized listing for this product">Full Listing</button>
+      <button class="quick-btn" data-prompt="Give me 13 optimized tags for this product">Tags</button>
+      <button class="quick-btn" data-prompt="Write an SEO-optimized title for this product">Title</button>
+      <button class="quick-btn" data-prompt="Write a compelling product description">Description</button>
+      <button class="quick-btn" id="photo-listing-btn">📷 Photo</button>
+    </div>
+
+  </div>
+
+  <!-- Settings Screen -->
+  <div id="settings-screen" class="screen hidden">
+    <div class="header">
+      <button id="back-btn">← Back</button>
+      <span class="logo-small">Settings</span>
+    </div>
+    <div class="settings-body">
+      <label class="field-label">License Key</label>
+      <input id="current-key" type="text" readonly />
+      <div id="expiry-countdown" class="countdown"></div>
+      <button id="change-key-btn">Change Key</button>
+      <div class="divider"></div>
+      <p class="hint">Need help? <a href="mailto:morishitajulian@gmail.com">Contact support</a></p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

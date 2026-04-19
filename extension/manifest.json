@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "RankifyAI Listing Assistant",
+  "version": "1.0.0",
+  "description": "AI-powered chatbot for creating optimal Etsy and eBay listings",
+  "permissions": ["storage", "activeTab"],
+  "host_permissions": ["https://www.etsy.com/*", "https://www.ebay.com/*"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.etsy.com/listing/create*",
+        "https://www.etsy.com/listing/*/edit*",
+        "https://www.ebay.com/sell*",
+        "https://www.ebay.com/lst/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}
